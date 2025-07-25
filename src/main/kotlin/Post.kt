@@ -27,7 +27,8 @@ data class Post(
     var marked_as_ads: Int = 0,
     var is_favorite: Boolean = false,
     var donut: Donut? = null,
-    var postponed_id: Int? = null
+    var postponed_id: Int? = null,
+    var arrayAttachment: Array<Attachment>
 ) {
 }
 

@@ -1,4 +1,7 @@
 import org.junit.jupiter.api.Test
+import ru.netology.AttachmentAudio
+import ru.netology.AttachmentPhoto
+import ru.netology.AttachmentVideo
 import ru.netology.Post
 import ru.netology.WallService
 import kotlin.test.assertEquals
@@ -6,6 +9,10 @@ import kotlin.test.assertEquals
 class WallServiceTest {
     @Test
     fun add() {
+        val attachmentAudio = AttachmentAudio(date = 4)
+        val attachmentVideo = AttachmentVideo(date = 5)
+        val attachmentPhoto = AttachmentPhoto(date = 6)
+        val array = arrayOf(attachmentAudio, attachmentPhoto, attachmentVideo)
         val post = Post(
             id = 9,
             owner_id = 1,
@@ -15,7 +22,8 @@ class WallServiceTest {
             text = "Привет!",
             reply_owner_id = 0,
             reply_post_id = 0,
-            friends_only = false
+            friends_only = false,
+            arrayAttachment = array
         )
 
         val result = WallService.add(post)
@@ -24,6 +32,10 @@ class WallServiceTest {
 
     @Test
     fun update() {
+        val attachmentAudio = AttachmentAudio(date = 4)
+        val attachmentVideo = AttachmentVideo(date = 5)
+        val attachmentPhoto = AttachmentPhoto(date = 6)
+        val array = arrayOf(attachmentAudio, attachmentPhoto, attachmentVideo)
         val post = Post(
             id = 1,
             owner_id = 1,
@@ -33,7 +45,8 @@ class WallServiceTest {
             text = "Привет!",
             reply_owner_id = 0,
             reply_post_id = 0,
-            friends_only = false
+            friends_only = false,
+            arrayAttachment = array
         )
         WallService.add(post)
 
