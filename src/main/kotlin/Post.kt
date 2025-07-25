@@ -96,9 +96,11 @@ object Donut {
 
 object WallService {
     private var posts = emptyArray<Post>()
+    private var idAllPost = 1
 
     fun add(post: Post): Post {
-        posts += post
+        val postNew = post.copy(id = idAllPost++)
+        posts += postNew
         return posts.last()
     }
 
@@ -114,6 +116,7 @@ object WallService {
 
     fun clear() {
         posts = emptyArray()
+        idAllPost = 0
     }
 }
 

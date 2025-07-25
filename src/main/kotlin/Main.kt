@@ -16,5 +16,10 @@ fun main() {
     post.text = "Hello!"
     println(WallService.update(post))
     println(post)
+
+    WallService.clear()
+    println(WallService.add(post))
+    println(WallService.add(post))
+    println(WallService.add(post))
 }
 
