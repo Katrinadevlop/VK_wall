@@ -10,11 +10,11 @@ data class Post(
     var reply_owner_id: Int,
     var reply_post_id: Int,
     var friends_only: Boolean,
-    var comments: Comments = Comments,
-    var copyright: Copyright = Copyright,
-    var likes: Likes = Likes,
-    var reposts: Reposts = Reposts,
-    var views: Views = Views,
+    var comments: Comments = Comments(),
+    var copyright: Copyright = Copyright(),
+    var likes: Likes = Likes(),
+    var reposts: Reposts = Reposts(),
+    var views: Views = Views(),
     var post_type: String = "",
     var post_source: PostSource? = null,
     var geo: Geo? = null,
@@ -29,71 +29,70 @@ data class Post(
     var donut: Donut? = null,
     var postponed_id: Int? = null,
     var arrayAttachment: Array<Attachment>
-) {
-}
+)
 
-object Comments {
-    val count: Int = 0
-    val can_post: Int = 1
-    val groups_can_post: Boolean = true
-    val can_close: Boolean = false
+data class Comments(
+    val count: Int = 0,
+    val can_post: Int = 1,
+    val groups_can_post: Boolean = true,
+    val can_close: Boolean = false,
     val can_open: Boolean = true
-}
+)
 
-object Copyright {
-    val id: Int = 0
-    val link: String = ""
-    val name: String = ""
+data class Copyright(
+    val id: Int = 0,
+    val link: String = "",
+    val name: String = "",
     val type: String = ""
-}
+)
 
-object Likes {
-    val count: Int = 0
-    val user_likes: Int = 0
-    val can_like: Int = 0
+data class Likes(
+    val count: Int = 0,
+    val user_likes: Int = 0,
+    val can_like: Int = 0,
     val can_publish: Int = 0
-}
+)
 
-object Reposts {
-    val count: Int = 0
+data class Reposts(
+    val count: Int = 0,
     val user_reposted: Int = 0
-}
+)
 
-object Views {
+data class Views(
     val count: Int = 0
-}
+)
 
-object PostSource {
-    val type: String = ""
-    val platform: String? = null
-    val data: String? = null
+data class PostSource(
+    val type: String = "",
+    val platform: String? = null,
+    val data: String? = null,
     val url: String? = null
-}
+)
 
-object Geo {
-    val type: String = ""
-    val coordinates: String = ""
+data class Geo(
+    val type: String = "",
+    val coordinates: String = "",
     val place: Place? = null
-}
+)
 
-object Place {
-    val id: Int = 0
-    val title: String = ""
-    val latitude: Double = 0.0
-    val longitude: Double = 0.0
-    val created: Int = 0
-    val icon: String = ""
-    val country: String = ""
-    val city: String = ""
+data class Place(
+    val id: Int = 0,
+    val title: String = "",
+    val latitude: Double = 0.0,
+    val longitude: Double = 0.0,
+    val created: Int = 0,
+    val icon: String = "",
+    val country: String = "",
+    val city: String = "",
     val type: Int = 0
-}
+)
 
-object Donut {
-    val is_donut: Boolean = false
-    val paid_duration: Int = 0
-    val can_publish_free_copy: Boolean = false
+data class Donut(
+    val is_donut: Boolean = false,
+    val paid_duration: Int = 0,
+    val can_publish_free_copy: Boolean = false,
     val edit_mode: String = ""
-}
+)
 
 object WallService {
     private var posts = emptyArray<Post>()

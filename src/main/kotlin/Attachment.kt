@@ -1,10 +1,10 @@
 package ru.netology
 
-interface Attachment {
-    var type: String
+sealed class Attachment {
+    abstract var type: String
 }
 
-class AttachmentPhoto(
+data class AttachmentPhoto(
     override var type: String = "Photo",
     val id: Int = 0,
     val album_id: Int = 0,
@@ -16,9 +16,9 @@ class AttachmentPhoto(
     val has_tags: Boolean? = false,
     val width: Int = 0,
     val height: Int = 0
-) : Attachment
+) : Attachment()
 
-class AttachmentVideo(
+data class AttachmentVideo(
     override var type: String = "Video",
     val id: Int = 0,
     val owner_id: Int = 0,
@@ -26,9 +26,9 @@ class AttachmentVideo(
     val description: String = "",
     val duration: Int = 0,
     val date: Int = 0
-) : Attachment
+) : Attachment()
 
-class AttachmentAudio(
+data class AttachmentAudio(
     override var type: String = "Audio",
     val id: Int = 0,
     val owner_id: Int = 0,
@@ -42,4 +42,4 @@ class AttachmentAudio(
     val date: Int = 0,
     val no_search: Int? = 0,
     val is_hq: Int? = 0
-) : Attachment
+) : Attachment()
