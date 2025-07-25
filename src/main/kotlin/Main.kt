@@ -1,0 +1,20 @@
+package ru.netology
+
+fun main() {
+    val post = Post(
+        id = 1,
+        owner_id = 1,
+        from_id = 1,
+        created_by = 1,
+        date = 20250725,
+        text = "Привет!",
+        reply_owner_id = 0,
+        reply_post_id = 0,
+        friends_only = false
+    )
+    println(WallService.add(post))
+    post.text = "Hello!"
+    println(WallService.update(post))
+    println(post)
+}
+
