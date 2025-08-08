@@ -6,6 +6,10 @@ sealed class Attachment {
 
 data class AttachmentPhoto(
     override var type: String = "Photo",
+    var photo: Photo
+) : Attachment()
+
+data class Photo(
     val id: Int = 0,
     val album_id: Int = 0,
     val owner_id: Int = 0,
@@ -16,20 +20,28 @@ data class AttachmentPhoto(
     val has_tags: Boolean? = false,
     val width: Int = 0,
     val height: Int = 0
-) : Attachment()
+)
 
 data class AttachmentVideo(
     override var type: String = "Video",
+    var video: Video
+) : Attachment()
+
+data class Video(
     val id: Int = 0,
     val owner_id: Int = 0,
     val title: String = "",
     val description: String = "",
     val duration: Int = 0,
     val date: Int = 0
-) : Attachment()
+)
 
 data class AttachmentAudio(
     override var type: String = "Audio",
+    var audio: Audio
+) : Attachment()
+
+data class Audio(
     val id: Int = 0,
     val owner_id: Int = 0,
     val artist: String = "",
@@ -42,4 +54,4 @@ data class AttachmentAudio(
     val date: Int = 0,
     val no_search: Int? = 0,
     val is_hq: Int? = 0
-) : Attachment()
+)
